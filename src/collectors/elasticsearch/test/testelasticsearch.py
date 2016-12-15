@@ -119,6 +119,12 @@ class TestElasticSearchCollector(CollectorTestCase):
         self.assertPublishedMany(publish_mock, metrics)
 
     @patch.object(Collector, 'publish')
+    def test_should_work_with_real_data_and_basic_auth(self, publish_mock):
+        self.collector.config["user"] = "user"
+        self.collector.config["password"] = "password"
+        self.test_should_work_with_real_data()
+
+    @patch.object(Collector, 'publish')
     def test_should_work_with_real_data_logstash_mode(self, publish_mock):
         returns = [
             self.getFixture('stats'),
