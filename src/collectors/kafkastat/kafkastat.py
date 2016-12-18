@@ -122,7 +122,7 @@ class KafkaCollector(diamond.collector.Collector):
                     if "," in key_prefix:
                         key_prefix = key_prefix.split(',')[0]
                 elif i > 0:
-                    key = objectname.split('=')[2]
+                    key = objectname.split('=')[i + 1]
                     if key:
                         if '"' in key:
                             key = key.split('"')[1]
